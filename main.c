@@ -18,7 +18,7 @@ int main(int argc, char **argv)
         line = get_next_line(fd);
         printf("%s", line);
     }
-    fd = close(fd);
+	fd = close(fd);
     return (0);
 }
 
