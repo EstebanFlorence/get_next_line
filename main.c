@@ -21,3 +21,6 @@ int main(int argc, char **argv)
     fd = close(fd);
     return (0);
 }
+
+/*gcc -Werror -Wextra -Wall -D BUFFER_SIZE=42
+get_next_line.c get_next_line_utils.c main.c*/
