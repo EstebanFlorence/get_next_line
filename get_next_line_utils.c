@@ -6,73 +6,45 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:57:15 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/06 18:57:31 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/06 20:02:41 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 
-size_t	numstr(const char *s, char c)
+char	*ft_strdup(const char *s1)
 {
-	size_t	i;
-	size_t	n;
-	size_t	len;
+	char		*s;
+	size_t		n;
 
-	i = 0;
-	n = 0;
-	len = 0;
-	while (s[i])
-	{
-		if (s[i] == c || s[i + 1] == '\0')
-		{
-			if (len != 0)
-				n++;
-			len = 0;
-		}
-		else
-			len++;
-		i++;
-	}
-	return (n);
+	n = ft_strlen(s1) + 1;
+	s = (char *)malloc(sizeof(*s) * n);
+	if (!s)
+		return (NULL);
+	return ((char *)ft_memcpy(s, s1, n));
 }
 
-void	ft_splitta(const char *s, char c, char **split, size_t n)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	size_t	i;
-	size_t	j;
-	size_t	len;
-	char	*tok;
+	int		i;
+	int		j;
+	char	*s;
 
 	i = 0;
 	j = 0;
-	len = 0;
-	while (j < n)
+	s = (char *)malloc (sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!s)
+		return (NULL);
+	while (i < (int)ft_strlen(s1))
 	{
-		if (s[i] == c || s[i] == '\0')
-		{
-			if (len != 0)
-			{
-				tok = (char *)ft_calloc((len + 1), sizeof(char));
-				ft_memcpy(tok, s + i - len, len);
-				split[j] = tok;
-				j++;
-			}
-			len = 0;
-		}
-		else
-			len++;
+		s[i] = s1[i];
 		i++;
 	}
-}
-
-char	**ft_split(const char *s, char c)
-{
-	char	**split;
-	size_t	n;
-
-	n = numstr(s, c);
-	split = malloc(sizeof(*split) * (n + 1));
-	ft_splitta(s, c, split, n);
-	split[n] = NULL;
-	return (split);
+	while (j < (int)ft_strlen(s2))
+	{
+		s[i + j] = s2[j];
+		j++;
+	}
+	s[i + j] = '\0';
+	return (s);
 }
