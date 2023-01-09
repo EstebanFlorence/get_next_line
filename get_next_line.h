@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 00:44:19 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/09 00:54:38 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/09 01:24:03 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ typedef struct s_list
 }	t_list;
 
 char	*get_next_line(int fd);
+
+char	*ft_strdup(const char *s1);
 
 #endif
