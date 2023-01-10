@@ -6,11 +6,28 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:57:15 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/09 01:23:36 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/09 02:34:45 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+t_list	*ft_lstlast(t_list *lst)
+{
+	t_list	*next;
+
+	if (lst != NULL)
+	{
+		next = lst;
+		while (1)
+		{
+			if (next->next == NULL)
+				return (next);
+			next = next->next;
+		}
+	}
+	return (NULL);
+}
 
 char	*ft_strdup(const char *s1)
 {

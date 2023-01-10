@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 00:44:19 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/09 01:24:03 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/09 14:46:20 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,25 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+#include <fcntl.h>
 
 # include <sys/types.h>
 # include <sys/uio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE
+#  define BUFFER_SIZE 42
 # endif
 
 typedef struct s_list
 {
-	char			*content;
+	char			*line;
 	struct s_list	*next;
 }	t_list;
 
 char	*get_next_line(int fd);
+int		newline(t_list *offset);
 
+t_list	*ft_lstlast(t_list *lst);
 char	*ft_strdup(const char *s1);
 
 #endif
