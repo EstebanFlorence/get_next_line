@@ -6,39 +6,20 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:57:15 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/09 02:34:45 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:37:27 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_list	*ft_lstlast(t_list *lst)
+size_t	ft_strlen(const char *s)
 {
-	t_list	*next;
+	size_t	i;
 
-	if (lst != NULL)
-	{
-		next = lst;
-		while (1)
-		{
-			if (next->next == NULL)
-				return (next);
-			next = next->next;
-		}
-	}
-	return (NULL);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char		*s;
-	size_t		n;
-
-	n = ft_strlen(s1) + 1;
-	s = (char *)malloc(sizeof(*s) * n);
-	if (!s)
-		return (NULL);
-	return ((char *)ft_memcpy(s, s1, n));
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
 
 char	*ft_strjoin(const char *s1, const char *s2)

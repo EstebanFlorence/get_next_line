@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 00:44:19 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/09 14:46:20 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/10 17:38:07 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,9 @@
 #  define BUFFER_SIZE 42
 # endif
 
-typedef struct s_list
-{
-	char			*line;
-	struct s_list	*next;
-}	t_list;
-
 char	*get_next_line(int fd);
-int		newline(t_list *offset);
+int		newline(char *offset);
 
-t_list	*ft_lstlast(t_list *lst);
 char	*ft_strdup(const char *s1);
 
 #endif
