@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:22:40 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/12 18:11:16 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:35:17 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	*get_next_line(int fd)
 	char			*sup;
 	char			*line;
 	char			*tmp;
+	char			*tmp2;
 	int				bytesread;
 
 	//if (fd < 0 || BUFFER_SIZE < 0/* || read(fd, &tmp, 0) < 0*/)
@@ -38,7 +39,14 @@ char	*get_next_line(int fd)
 		//	line ha il contenuto di size BUFFER
 		bytesread = (int)read(fd, tmp, BUFFER_SIZE);
 		tmp[bytesread] = '\0';
-		//	se tmp contiene \n => tmp = da 0 a \n		salvare da \n a fine BUFFER in offset
+		//	se tmp contiene \n -> tmp = da 0 a \n	e	salvare da \n a fine BUFFER in offset
+		if (newline(tmp))
+		{
+			tmp2 = ft_substr(tmp, 0, newline(tmp));
+			
+		}
+
+	}
 		
 
 
@@ -47,7 +55,7 @@ char	*get_next_line(int fd)
 
 
 
-
+/*
 		//	se incontro \n -> ritorno line fino a \n, eventuale resto (BUFFERSIZE - len fino a \n) nella statica
 		sup = offset;
 		offset = ft_strjoin(sup, tmp);
@@ -64,16 +72,17 @@ char	*get_next_line(int fd)
 	}
 	free (offset);
 	free (tmp);
+*/
 }
 
-size_t	endorendornewline(char *tmp, int bytesread)
+size_t	newline(char *tmp/*, int bytesread*/)
 {
 	int		i;
 
 	if (tmp == NULL)
 		return (0);
-	if (bytesread == 0)
-		return (ft_strlen(tmp));
+	/*if (bytesread == 0)
+		return (ft_strlen(tmp));*/
 	i = 0;
 	while (tmp[i])
 	{
