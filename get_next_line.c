@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:22:40 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/10 19:52:16 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:01:27 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*get_next_line(int fd)
 {
 	static char		*offset;
 	char			*line;
+	char			*stat;
 	int				bytesread;
 	int				i;
 
@@ -32,9 +33,18 @@ char	*get_next_line(int fd)
 		offset = (char *)malloc(1);
 		offset[i] = '\0';
 	}
-	while (!newline(offset) || bytesread)
+	stat = offset;
+	//	Finche read non da 0 = arriva a fine file
+	while (bytesread)
 	{
+		//	line ha il contenuto di size BUFFER
 		bytesread = (int)read(fd, line, BUFFER_SIZE);
+		//	se incontro \n -> ritorno line fino a \n, eventuale resto (BUFFERSIZE - len fino a \n) nella statica
+		if (ft_strchr(line, '\n'))
+		{
+			
+		}
+
 
 	}
 

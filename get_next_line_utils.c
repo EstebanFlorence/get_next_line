@@ -6,11 +6,30 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:57:15 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/10 17:37:27 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:48:37 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)s)[i] == ((unsigned char)c))
+			return (((unsigned char *)s) + i);
+		i++;
+	}
+	return (NULL);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	return (ft_memchr(s, c, ft_strlen(s) + 1));
+}
 
 size_t	ft_strlen(const char *s)
 {
@@ -20,6 +39,26 @@ size_t	ft_strlen(const char *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
+}
+
+char	*ft_substr(const char *s, unsigned int start, size_t len)
+{
+	char	*d;
+	size_t	i;
+	size_t	n;
+
+	i = 0;
+	n = ft_strlen(s);
+	d = (char *)malloc(sizeof(char) * (len + 1));
+	if (!d)
+		return (NULL);
+	while (i < len && i + start < n)
+	{
+		d[i] = s[start + i];
+		i++;
+	}
+	d[i] = '\0';
+	return (d);
 }
 
 char	*ft_strjoin(const char *s1, const char *s2)
