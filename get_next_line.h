@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 00:44:19 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/12 15:28:14 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/15 18:06:49 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 # endif
 
 char	*get_next_line(int fd);
-size_t		newline(char *offset);
+char	*getline(int fd, char **offset, char *buffer);
+size_t		newline(char *tmp);
 
 void	*ft_memchr(const void *s, int c, size_t n);
 char	*ft_strchr(const char *s, int c);
