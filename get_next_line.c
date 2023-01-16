@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:22:40 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/16 17:55:14 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:09:15 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-
 char	*get_line(int fd, char **stat, char *buffer)
 {
 	int		bytesread;
@@ -54,10 +53,10 @@ char	*get_line(int fd, char **stat, char *buffer)
 		{
 			line = ft_substr(*stat, 0, endornewline(*stat, bytesread));
 			free (*stat);
-			*stat = ft_substr(buffer, (int)endornewline(buffer, bytesread), (ft_strlen(buffer) - endornewline(buffer, bytesread)));
+			*stat = ft_substr(buffer, (int)endornewline(buffer, bytesread),
+					(ft_strlen(buffer) - endornewline(buffer, bytesread)));
 			return (line);
 		}
-		
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 00:44:19 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/16 17:42:54 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:10:14 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include <fcntl.h>
+# include <fcntl.h>
 
 # include <sys/types.h>
 # include <sys/uio.h>
@@ -29,7 +29,7 @@ char		*get_next_line(int fd);
 char		*get_line(int fd, char **stat, char *buffer);
 size_t		endornewline(char *buffer, int bytesread);
 
-void	*ft_memcpy(void *dest, const void *src, size_t n);
+void		*ft_memcpy(void *dest, const void *src, size_t n);
 char		*ft_strchr(const char *s, int c);
 size_t		ft_strlen(const char *s);
 char		*ft_strdup(const char *s1);
