@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:22:40 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/16 17:19:55 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:55:14 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,25 @@ char	*get_line(int fd, char **stat, char *buffer)
 	while (bytesread)
 	{
 		bytesread = read(fd, buffer, BUFFER_SIZE);
-		if (bytesread <= 0)
+		if (bytesread == -1)
 			return (NULL);
 		buffer[bytesread] = '\0';
 		tmpstat = *stat;
 		*stat = ft_strjoin(tmpstat, buffer);
 		free (tmpstat);
-		if (newline(buffer, bytesread))
+		if (endornewline(*stat, bytesread) > 0)
 		{
-			line = ft_substr(*stat, 0, newline(*stat, bytesread));
+			line = ft_substr(*stat, 0, endornewline(*stat, bytesread));
 			free (*stat);
-			*stat = ft_substr(buffer, (int)newline(buffer, bytesread), (ft_strlen(buffer) - newline(buffer, bytesread)));
+			*stat = ft_substr(buffer, (int)endornewline(buffer, bytesread), (ft_strlen(buffer) - endornewline(buffer, bytesread)));
+			return (line);
 		}
-		return (line);
+		
 	}
 	return (0);
 }
 
-size_t	newline(char *buffer, int bytesread)
+size_t	endornewline(char *buffer, int bytesread)
 {
 	int		i;
 
@@ -78,20 +79,3 @@ size_t	newline(char *buffer, int bytesread)
 	}
 	return (0);
 }
-
-
-	/*bytesread = 1;
-	while (bytesread)
-	{
-		bytesread = read(fd, buffer, BUFFER_SIZE);
-		if (bytesread = -1);
-			return (NULL);
-		buffer[bytesread] = '\0';
-		tmpstat = stat;
-		stat = ft_strjoin(tmpstat, buffer);
-		free (tmpstat);
-		if (endornewline(buffer, bytesread))
-		{
-			
-		}
-	}*/
