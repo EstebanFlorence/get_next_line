@@ -8,13 +8,13 @@ int main(int argc, char **argv)
 
 //Casting argc to quiet the compiler's warnings.
 
-    fd = open(argv[1], O_RDONLY);
+    fd = open("test.txt", O_RDONLY);
     line = "";
-    //while (line != NULL)
-    //{
+    while (line != NULL)
+    {
         line = get_next_line(fd);
         printf("%s", line);
-    //}
+    }
 	fd = close(fd);
     return (0);
 }

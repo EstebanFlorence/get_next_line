@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:22:40 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/16 11:18:02 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:19:55 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char	*get_next_line(int fd)
 	char			*buffer;
 	char			*line;
 
-	//if (fd < 0 || BUFFER_SIZE < 0/* || read(fd, &buffer, 0) < 0*/)
-		//return (NULL);
+	if (fd < 0 || BUFFER_SIZE < 0 || read(fd, &buffer, 0) < 0)
+		return (NULL);
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
@@ -28,50 +28,70 @@ char	*get_next_line(int fd)
 		stat = (char *)malloc(1);
 		stat[0] = '\0';
 	}
-	line = getline(fd, stat, buffer);
-
+	line = get_line(fd, &stat, buffer);
+	free (buffer);
 	return (line);
 }
 
 
-char	*getline(int fd, char **stat, char *buffer)
+char	*get_line(int fd, char **stat, char *buffer)
 {
 	int		bytesread;
-	char	*tmpbuffer;
 	char	*tmpstat;
 	char	*line;
 
 	bytesread = 1;
 	while (bytesread)
 	{
-		bytesread = read(fd, tmpbuffer, BUFFER_SIZE);
-		if (bytesread = -1);
+		bytesread = read(fd, buffer, BUFFER_SIZE);
+		if (bytesread <= 0)
 			return (NULL);
-		tmpbuffer[bytesread] = '\0';
-
-		while (!newline(tmpbuffer))
+		buffer[bytesread] = '\0';
+		tmpstat = *stat;
+		*stat = ft_strjoin(tmpstat, buffer);
+		free (tmpstat);
+		if (newline(buffer, bytesread))
 		{
-
+			line = ft_substr(*stat, 0, newline(*stat, bytesread));
+			free (*stat);
+			*stat = ft_substr(buffer, (int)newline(buffer, bytesread), (ft_strlen(buffer) - newline(buffer, bytesread)));
 		}
+		return (line);
 	}
-	tmpstat = stat;
-	stat = ft_strjoin(tmpstat, tmpbuffer);
-	free (tmpstat);
-
+	return (0);
 }
 
-size_t	newline(char *buffer)
+size_t	newline(char *buffer, int bytesread)
 {
 	int		i;
 
 	if (buffer == NULL)
 		return (0);
+	if (bytesread == 0)
+		return (ft_strlen(buffer));
 	i = 0;
 	while (buffer[i])
 	{
 		if (buffer[i] == '\n')
-			return (i);
+			return (i + 1);
 		i++;
 	}
 	return (0);
 }
+
+
+	/*bytesread = 1;
+	while (bytesread)
+	{
+		bytesread = read(fd, buffer, BUFFER_SIZE);
+		if (bytesread = -1);
+			return (NULL);
+		buffer[bytesread] = '\0';
+		tmpstat = stat;
+		stat = ft_strjoin(tmpstat, buffer);
+		free (tmpstat);
+		if (endornewline(buffer, bytesread))
+		{
+			
+		}
+	}*/

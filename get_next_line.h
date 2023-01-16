@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 00:44:19 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/15 18:06:49 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:14:13 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@
 #  define BUFFER_SIZE 42
 # endif
 
-char	*get_next_line(int fd);
-char	*getline(int fd, char **offset, char *buffer);
-size_t		newline(char *tmp);
+char		*get_next_line(int fd);
+char		*get_line(int fd, char **stat, char *buffer);
+size_t		newline(char *buffer, int bytesread);
 
-void	*ft_memchr(const void *s, int c, size_t n);
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *s);
-char	*ft_strdup(const char *s1);
-char	*ft_substr(const char *s, unsigned int start, size_t len);
-char	*ft_strjoin(const char *s1, const char *s2);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+char		*ft_strchr(const char *s, int c);
+size_t		ft_strlen(const char *s);
+char		*ft_strdup(const char *s1);
+char		*ft_substr(const char *s, unsigned int start, size_t len);
+char		*ft_strjoin(const char *s1, const char *s2);
 
 #endif
