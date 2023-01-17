@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:22:40 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/17 18:09:03 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/17 18:09:29 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
-	static char		*stat;
+	static char		*stat[1024];
 	char			*buffer;
 	char			*line;
 
@@ -23,12 +23,12 @@ char	*get_next_line(int fd)
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (NULL);
-	if (!stat)
+	if (!stat[fd])
 	{
-		stat = (char *)malloc(1);
-		stat[0] = '\0';
+		stat[fd] = (char *)malloc(1);
+		stat[fd][0] = '\0';
 	}
-	line = get_line(fd, &stat, buffer);
+	line = get_line(fd, &stat[fd], buffer);
 	free (buffer);
 	return (line);
 }
