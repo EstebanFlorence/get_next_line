@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:22:40 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/16 18:09:15 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/17 17:31:02 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ char	*get_line(int fd, char **stat, char *buffer)
 		if (endornewline(*stat, bytesread) > 0)
 		{
 			line = ft_substr(*stat, 0, endornewline(*stat, bytesread));
-			free (*stat);
-			*stat = ft_substr(buffer, (int)endornewline(buffer, bytesread),
-					(ft_strlen(buffer) - endornewline(buffer, bytesread)));
+			tmpstat = *stat;
+			*stat = ft_substr(tmpstat, (int)endornewline(tmpstat, bytesread), (ft_strlen(tmpstat) - endornewline(tmpstat, bytesread)));
+			free (tmpstat);
 			return (line);
 		}
 	}
@@ -67,8 +67,6 @@ size_t	endornewline(char *buffer, int bytesread)
 
 	if (buffer == NULL)
 		return (0);
-	if (bytesread == 0)
-		return (ft_strlen(buffer));
 	i = 0;
 	while (buffer[i])
 	{
@@ -76,5 +74,7 @@ size_t	endornewline(char *buffer, int bytesread)
 			return (i + 1);
 		i++;
 	}
+	if (bytesread == 0 && buffer[0] != '\0')
+		return (ft_strlen(buffer));
 	return (0);
 }

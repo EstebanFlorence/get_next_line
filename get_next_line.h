@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 00:44:19 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/16 18:10:14 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/17 16:24:06 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@
 # include <sys/uio.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 4200
 # endif
 
 char		*get_next_line(int fd);
 char		*get_line(int fd, char **stat, char *buffer);
 size_t		endornewline(char *buffer, int bytesread);
 
+char		*ft_strrchr(const char *s, int c);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 char		*ft_strchr(const char *s, int c);
 size_t		ft_strlen(const char *s);
-char		*ft_strdup(const char *s1);
 char		*ft_substr(const char *s, unsigned int start, size_t len);
 char		*ft_strjoin(const char *s1, const char *s2);
 
