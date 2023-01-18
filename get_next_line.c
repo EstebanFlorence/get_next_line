@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:22:40 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/17 18:09:03 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:01:53 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,17 @@ char	*get_next_line(int fd)
 		stat = (char *)malloc(1);
 		stat[0] = '\0';
 	}
-	line = get_line(fd, &stat, buffer);
+	line = zeline(fd, &stat, buffer);
+	if (line == NULL)
+	{
+		free (stat);
+		stat = NULL;
+	}
 	free (buffer);
 	return (line);
 }
 
-char	*get_line(int fd, char **stat, char *buffer)
+char	*zeline(int fd, char **stat, char *buffer)
 {
 	int		bytesread;
 	char	*tmpstat;

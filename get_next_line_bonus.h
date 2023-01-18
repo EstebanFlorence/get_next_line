@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 00:44:19 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/17 18:05:42 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/18 17:02:18 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # endif
 
 char		*get_next_line(int fd);
-char		*get_line(int fd, char **stat, char *buffer);
+char		*zeline(int fd, char **stat, char *buffer);
 size_t		endornewline(char *buffer, int bytesread);
 
 char		*ft_strrchr(const char *s, int c);
