@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:22:40 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/18 19:22:54 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:05:47 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ char	*get_next_line(int fd)
 		stat[fd][0] = '\0';
 	}
 	line = zeline(fd, &stat[fd], buffer);
+	if (line == NULL)
+	{
+		free (stat[fd]);
+		stat[fd] = NULL;
+	}
 	free (buffer);
 	return (line);
 }
