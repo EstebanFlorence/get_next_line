@@ -6,11 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:22:40 by adi-nata          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2023/01/18 19:08:07 by adi-nata         ###   ########.fr       */
-=======
-/*   Updated: 2023/01/18 18:53:27 by adi-nata         ###   ########.fr       */
->>>>>>> 553d65121a71b88e0a9ae54e4d1b0db79ad56a4e
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +29,11 @@ char	*get_next_line(int fd)
 		stat[fd][0] = '\0';
 	}
 	line = zeline(fd, &stat[fd], buffer);
-<<<<<<< HEAD
 	/*if (line == NULL)
 	{
 		free (stat);
 		//stat = NULL;
 	}*/
-=======
-	if (line == NULL)
-	{
-		free (stat);
-		*stat = NULL;
-	}
->>>>>>> 553d65121a71b88e0a9ae54e4d1b0db79ad56a4e
 	free (buffer);
 	return (line);
 }
