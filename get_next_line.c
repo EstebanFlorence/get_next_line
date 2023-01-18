@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 17:22:40 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/18 20:27:57 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:39:10 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ char	*get_next_line(int fd)
 		stat = NULL;
 	}
 	free (buffer);
-	if (line == NULL)
-	{
-		free (stat);
-		stat = NULL;
-	}
 	return (line);
 }
 
@@ -54,11 +49,7 @@ char	*zeline(int fd, char **stat, char *buffer)
 	{
 		bytesread = read(fd, buffer, BUFFER_SIZE);
 		if (bytesread == -1)
-		{
-			free (stat);
 			return (NULL);
-		}
-			
 		buffer[bytesread] = '\0';
 		tmpstat = *stat;
 		*stat = ft_strjoin(tmpstat, buffer);
