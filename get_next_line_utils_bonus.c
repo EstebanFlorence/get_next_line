@@ -6,7 +6,7 @@
 /*   By: adi-nata <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 18:57:15 by adi-nata          #+#    #+#             */
-/*   Updated: 2023/01/17 18:05:08 by adi-nata         ###   ########.fr       */
+/*   Updated: 2023/03/06 21:30:41 by adi-nata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,36 +65,4 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	}
 	s[i + j] = '\0';
 	return (s);
-}
-
-char	*ft_strrchr(const char *s, int c)
-{
-	int	i;
-
-	i = ft_strlen(s);
-	if (s != NULL)
-	{
-		while (i >= 0)
-		{
-			if (s[i] == (char)c)
-				return ((char *)&s[i]);
-			i--;
-		}
-	}
-	return (NULL);
-}
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t	i;
-
-	if (dest == NULL && src == NULL)
-		return (NULL);
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
-	}
-	return (dest);
 }
